@@ -29,7 +29,8 @@ public class GMATApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        RealmConfiguration realmConfig = new RealmConfiguration.Builder(getApplicationContext()).build();
+        RealmConfiguration realmConfig = new RealmConfiguration.Builder(getApplicationContext())
+                .build();
         Realm.setDefaultConfiguration(realmConfig);
     }
 }

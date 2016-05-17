@@ -25,6 +25,7 @@ import org.iliat.gmat.dao.GMATAPI;
 import org.iliat.gmat.model.AnswerModel;
 import org.iliat.gmat.model.QuestionModel;
 import org.iliat.gmat.model.QuestionPackModel;
+import org.iliat.gmat.model.QuestionTypeModel;
 import org.iliat.gmat.network.APIUrls;
 import org.iliat.gmat.enitity.DownloadJSONTask;
 
@@ -37,6 +38,8 @@ import org.iliat.gmat.network.JSONQuestion;
 import org.iliat.gmat.network.JSONQuestionList;
 import org.iliat.gmat.network.JSONQuestionPack;
 import org.iliat.gmat.network.JSONQuestionPackList;
+import org.iliat.gmat.network.JSONQuestionType;
+import org.iliat.gmat.network.JSONQuestionTypeList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -65,6 +68,7 @@ public class LoginActivity extends AppCompatActivity implements JSONPreDownloadH
 
     private static final String TAG_QUESION_PACK_DOWNLOAD = "question pack download";
     private static final String TAG_QUESION_DOWNLOAD = "question download";
+    private static final String TAG_QUESION_TYPE_DOWNLOAD="question type download";
     private Realm realm;
 
     private TextInputLayout inputLayoutEmail, inputLayoutPassword;
@@ -77,9 +81,11 @@ public class LoginActivity extends AppCompatActivity implements JSONPreDownloadH
 
     private final String DOWNLOAD_QUESTION_TAG = "Download question";
     private final String DOWNLOAD_QUESTION_PACK_TAG = "Download question pack";
+    private final String DOWNLOAD_QUESTION_TYPE_TAG = "Download question type";
 
     private boolean mQuestionDownloadCompleted = false;
     private boolean mQuestionPackDownloadCompleted = false;
+    private boolean mQuestionTypeDownloadCompleted = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -356,6 +362,42 @@ public class LoginActivity extends AppCompatActivity implements JSONPreDownloadH
         }
     }
 
+    public void dowloadQuestionType(){
+        String url = APIUrls.QUESTION_TYPE_API;
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        OkHttpClient mHttpClient = new OkHttpClient();
+        mHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                JSONQuestionTypeList jsonQuestionTypeList = (
+                        new Gson()).fromJson(response.body().charStream(),
+                        JSONQuestionTypeList.class);
+                saveQuestionType(jsonQuestionTypeList);
+                onJSONDownloadFinished(TAG_QUESION_TYPE_DOWNLOAD, true);
+            }
+        });
+    }
+
+    private void saveQuestionType(JSONQuestionTypeList jsonQuestionTypeList) {
+        realm = Realm.getDefaultInstance();
+        for(JSONQuestionType jsonQuestionType : jsonQuestionTypeList.getList()) {
+
+            realm.beginTransaction();
+            QuestionTypeModel questionTypeModel=new QuestionTypeModel();
+            questionTypeModel.setDetail(jsonQuestionType.getDetail());
+            questionTypeModel.setCode(jsonQuestionType.getCode());
+            realm.copyToRealmOrUpdate(questionTypeModel);
+            realm.commitTransaction();
+        }
+    }
+
     private void onJSONDownloadFinished(String tag, boolean result) {
         if(!result){
 
@@ -377,8 +419,11 @@ public class LoginActivity extends AppCompatActivity implements JSONPreDownloadH
             else if(tag == TAG_QUESION_DOWNLOAD) {
                 mQuestionDownloadCompleted = true;
                 downloadQuestionPacks();
+                dowloadQuestionType();
+            }else if(tag== TAG_QUESION_TYPE_DOWNLOAD){
+                mQuestionTypeDownloadCompleted=true;
             }
-            if(mQuestionDownloadCompleted && mQuestionPackDownloadCompleted) {
+            if(mQuestionDownloadCompleted && mQuestionPackDownloadCompleted && mQuestionTypeDownloadCompleted) {
                 /* Good, move to next screen */
                 goToMainActivity();
             }
@@ -410,9 +455,12 @@ public class LoginActivity extends AppCompatActivity implements JSONPreDownloadH
             case DOWNLOAD_QUESTION_PACK_TAG:
                 mQuestionPackDownloadCompleted = true;
                 break;
+            case DOWNLOAD_QUESTION_TYPE_TAG:
+                mQuestionTypeDownloadCompleted = true;
+                break;
         }
 
-        if(mQuestionDownloadCompleted && mQuestionPackDownloadCompleted) {
+        if(mQuestionDownloadCompleted && mQuestionPackDownloadCompleted&&mQuestionTypeDownloadCompleted) {
             goToMainActivity();
         }
     }
@@ -423,6 +471,8 @@ public class LoginActivity extends AppCompatActivity implements JSONPreDownloadH
             case DOWNLOAD_QUESTION_TAG:
                 break;
             case DOWNLOAD_QUESTION_PACK_TAG:
+                break;
+            case DOWNLOAD_QUESTION_TYPE_TAG:
                 break;
         }
     }

@@ -10,4 +10,5 @@ public class APIUrls {
     public static final String QUESTION_PACKS_API = API_ROOT + "/question_packs";
     public static final String LOGIN_API = API_ROOT + "/login";
     public static final String VERSION_API = API_ROOT + "/version";
+    public static final String QUESTION_TYPE_API = API_ROOT + "/question_type";
 }
