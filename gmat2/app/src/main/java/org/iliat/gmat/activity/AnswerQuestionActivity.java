@@ -162,7 +162,6 @@ public class AnswerQuestionActivity
                     } else {
                         txtCountTime.setText(String.format("%02d:%02d", countTime / 60, countTime % 60));
                     }
-
                     countTime++;
                     }
                 });

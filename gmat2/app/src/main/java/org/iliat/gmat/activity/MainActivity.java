@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import org.iliat.gmat.R;
 import org.iliat.gmat.dialog.DownloadImageDialog;
+import org.iliat.gmat.fragment.HomeFragment;
 import org.iliat.gmat.fragment.QuestionPackFragment;
 import org.iliat.gmat.interf.OnDownloadFinished;
 import org.iliat.gmat.interf.ScreenManager;
@@ -27,11 +28,10 @@ import org.iliat.gmat.utils.QuestionHelper;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
-    public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, ScreenManager {
-
-    FragmentManager mFragmentManager;
-    QuestionPackFragment questionPackFragment;
+    public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ScreenManager {
+        FragmentManager mFragmentManager;
+        QuestionPackFragment questionPackFragment;
+        HomeFragment homeFragment;
 
 
     public void goToActivity(Class activityClass, Bundle bundle){
@@ -61,9 +61,11 @@ import io.realm.RealmConfiguration;
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         getIntances();
-        questionPackFragment = new QuestionPackFragment();
-        questionPackFragment.setmContext(this);
-        openFragment(questionPackFragment, true);
+        homeFragment = new HomeFragment();
+        openFragment(homeFragment, true);
+//        questionPackFragment = new QuestionPackFragment();
+//        questionPackFragment.setmContext(this);
+//        openFragment(questionPackFragment, true);
     }
 
     @Override
@@ -162,7 +164,7 @@ import io.realm.RealmConfiguration;
     @Override
     public void openFragment(Fragment fragment, boolean addToBackStack) {
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(R.anim.trans_left_in, R.anim.trans_left_out);
+        fragmentTransaction.setCustomAnimations(R.anim.anim_there_come, R.anim.anim_there_gone);
         fragmentTransaction.replace(R.id.view_fragment, fragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         if (addToBackStack) {

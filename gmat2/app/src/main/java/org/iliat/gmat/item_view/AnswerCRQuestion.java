@@ -67,7 +67,7 @@ public class AnswerCRQuestion extends LinearLayout implements View.OnClickListen
         if (isUserChoise) {
             imgChoise.setColorFilter(ContextCompat.getColor(mContext, R.color.color_selected_answer));
             txtContentAnswer.setTextColor(ContextCompat.getColor(mContext, R.color.color_selected_answer));
-            txtContentAnswer.setTypeface(Typeface.DEFAULT_BOLD);
+//            txtContentAnswer.setTypeface(Typeface.DEFAULT);
         }
     }
 
@@ -76,11 +76,11 @@ public class AnswerCRQuestion extends LinearLayout implements View.OnClickListen
         if (isUserChoise) {
             imgChoise.setColorFilter(ContextCompat.getColor(mContext, R.color.color_selected_answer));
             txtContentAnswer.setTextColor(ContextCompat.getColor(mContext, R.color.color_selected_answer));
-            txtContentAnswer.setTypeface(Typeface.DEFAULT_BOLD);
+//            txtContentAnswer.setTypeface(Typeface.DEFAULT);
         } else {
             imgChoise.setColorFilter(ContextCompat.getColor(mContext, R.color.color_normal_answer));
             txtContentAnswer.setTextColor(ContextCompat.getColor(mContext, R.color.color_normal_answer));
-            txtContentAnswer.setTypeface(Typeface.DEFAULT);
+//            txtContentAnswer.setTypeface(Typeface.DEFAULT);
         }
 
     }

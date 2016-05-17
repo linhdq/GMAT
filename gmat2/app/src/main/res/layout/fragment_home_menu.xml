@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_home_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/home_layout_marginTio">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/home_layout_marginTio"
+                android:layout_marginBottom="@dimen/home_layout_marginTio">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_question"
+                    android:id="@+id/btn_questions"
+                    android:background="@drawable/button_home"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/home_button_marginBottom"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Question Packs"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/text_size_home"/>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/home_layout_marginTio"
+                android:layout_marginBottom="@dimen/home_layout_marginTio">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_summary"
+                    android:id="@+id/btn_summary"
+                    android:background="@drawable/button_home"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/home_button_marginBottom"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Summary"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/text_size_home"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/home_layout_marginTio">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/home_layout_marginTio"
+                android:layout_marginBottom="@dimen/home_layout_marginTio">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_about"
+                    android:id="@+id/btn_1"
+                    android:background="@drawable/button_home"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/home_button_marginBottom"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="About us"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/text_size_home"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/home_layout_marginTio"
+                android:layout_marginBottom="@dimen/home_layout_marginTio">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_about"
+                    android:id="@+id/btn_about"
+                    android:background="@drawable/button_home"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/home_button_marginBottom"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="About us"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/text_size_home"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

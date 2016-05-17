@@ -82,14 +82,14 @@ public class AnswerCRQuestionReview extends LinearLayout implements View.OnClick
     public void onClick(View v) {
         if (!isClick){
             isClick = true;
-            txtContentAnswer.setTypeface(Typeface.DEFAULT_BOLD);
-            txtExplanation.setTypeface(Typeface.DEFAULT_BOLD);
+//            txtContentAnswer.setTypeface(Typeface.DEFAULT_BOLD);
+//            txtExplanation.setTypeface(Typeface.DEFAULT_BOLD);
             line.setVisibility(View.VISIBLE);
             txtExplanation.setVisibility(View.VISIBLE);
         } else {
             isClick = false;
-            txtContentAnswer.setTypeface(Typeface.DEFAULT);
-            txtExplanation.setTypeface(Typeface.DEFAULT);
+//            txtContentAnswer.setTypeface(Typeface.DEFAULT);
+//            txtExplanation.setTypeface(Typeface.DEFAULT);
             line.setVisibility(View.GONE);
             txtExplanation.setVisibility(View.GONE);
         }

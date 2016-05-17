@@ -21,4 +21,5 @@
     <color name="color_primary_dark">#E64A19</color>
     <color name="color_window_background">#FAFAFA</color>
     <color name="color_background_line">#E0E0E0</color>
+    <color name="color_home_background">#FFF8E1</color>
 </resources>
